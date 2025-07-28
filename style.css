@@ -1,0 +1,115 @@
+/* Developer credit */
+.developer {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #ffffff;
+  font-style: italic;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.note {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #eeeeee;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+/* Developer credit */
+.developer {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #ffffff;
+  font-style: italic;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+/* Reset default margin & set base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #83a4d4, #b6fbff);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main container */
+.container {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Title */
+.container h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+/* Input field */
+#speedInput {
+  padding: 12px;
+  font-size: 16px;
+  width: 140px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  outline: none;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+}
+
+/* Button styling */
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #0066ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #0044cc;
+  transform: translateY(-2px);
+}
+
+/* Note */
+.note {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #eeeeee;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
