@@ -15,6 +15,10 @@ A lightweight Chrome and Edge extension that lets you change the playback speed 
 - 🔄 Change video speed between **0.1x to 10x**
 - ⚡ Instant response with no page reload
 - 🌐 Content script handles dynamically loaded videos
+- ✅ Save preferred speed in **local storage** (applied automatically on reload).
+- ✅ Keyboard shortcuts for quick control:
+  - **Shift + {** → Increase speed by **0.25x**
+  - **Shift + }** → Decrease speed by **0.25x**
 
 ---
 
