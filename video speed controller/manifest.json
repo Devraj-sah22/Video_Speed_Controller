@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Video Speed Controller by DEVRAJ",
+  "version": "1.2",
+  "description": "Change the playback speed of any video on any site. Developed by Devraj.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
