@@ -113,3 +113,44 @@ button:hover {
   color: #eeeeee;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #ecf0f3;
+}
+
+.container {
+  text-align: center;
+  padding: 30px;
+  width: 280px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.note {
+  font-size: 13px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.hint {
+  font-size: 13px;
+  color: #444;
+  margin-top: 8px;
+}
