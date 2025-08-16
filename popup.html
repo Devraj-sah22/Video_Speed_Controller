@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Speed Controller Settings</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <h1>Video Speed Controller</h1>
+      <div class="version">v1.0.0</div>
+    </header>
+
+    <main class="popup-content">
+      <!-- Persistence Toggle Section -->
+      <section class="setting-section">
+        <div class="setting-header">
+          <h2>Auto-Apply Speeds</h2>
+          <p class="setting-description">Automatically apply saved speeds when visiting websites</p>
+        </div>
+        <div class="toggle-container">
+          <label class="toggle-switch">
+            <input type="checkbox" id="persistenceToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="toggle-label" id="persistenceLabel">Enabled</span>
+        </div>
+      </section>
+
+      <!-- Max Speed Configuration Section -->
+      <section class="setting-section">
+        <div class="setting-header">
+          <h2>Maximum Speed Limit</h2>
+          <p class="setting-description">Set the maximum playback speed allowed</p>
+        </div>
+        <div class="speed-input-container">
+          <div class="input-group">
+            <input type="number" id="maxSpeedInput" min="2.0" max="10.0" step="0.5" placeholder="4.0">
+            <span class="input-suffix">x</span>
+          </div>
+          <button id="saveMaxSpeedBtn" class="apply-btn">Save Max</button>
+        </div>
+        <div class="max-speed-presets">
+          <button class="preset-btn max-preset" data-speed="4.0">4.0x</button>
+          <button class="preset-btn max-preset" data-speed="6.0">6.0x</button>
+          <button class="preset-btn max-preset" data-speed="8.0">8.0x</button>
+          <button class="preset-btn max-preset" data-speed="10.0">10.0x</button>
+        </div>
+      </section>
+
+      <!-- Manual Speed Input Section -->
+      <section class="setting-section">
+        <div class="setting-header">
+          <h2>Manual Speed Control</h2>
+          <p class="setting-description">Set a custom playback speed for the current video</p>
+        </div>
+        <div class="speed-input-container">
+          <div class="input-group">
+            <input type="number" id="speedInput" min="0.25" max="4.0" step="0.25" placeholder="1.0">
+            <span class="input-suffix">x</span>
+          </div>
+          <button id="applySpeedBtn" class="apply-btn">Apply Speed</button>
+        </div>
+        <div class="speed-presets" id="speedPresets">
+          <!-- Speed presets will be dynamically generated based on max speed -->
+        </div>
+      </section>
+
+      <!-- Keyboard Shortcuts Configuration Section -->
+      <section class="setting-section">
+        <div class="setting-header">
+          <h2>Keyboard Shortcuts</h2>
+          <p class="setting-description">Customize your keyboard shortcuts for speed control</p>
+        </div>
+        <div class="shortcut-config">
+          <div class="shortcut-item">
+            <label class="shortcut-label">Increase Speed:</label>
+            <div class="shortcut-input-container">
+              <input type="text" id="increaseShortcut" class="shortcut-input" placeholder="Shift+>" readonly>
+              <button class="shortcut-btn" id="recordIncreaseBtn">Record</button>
+            </div>
+          </div>
+          <div class="shortcut-item">
+            <label class="shortcut-label">Decrease Speed:</label>
+            <div class="shortcut-input-container">
+              <input type="text" id="decreaseShortcut" class="shortcut-input" placeholder="Shift+<" readonly>
+              <button class="shortcut-btn" id="recordDecreaseBtn">Record</button>
+            </div>
+          </div>
+          <div class="shortcut-item">
+            <label class="shortcut-label">Reset Speed:</label>
+            <div class="shortcut-input-container">
+              <input type="text" id="resetShortcut" class="shortcut-input" placeholder="Shift+R" readonly>
+              <button class="shortcut-btn" id="recordResetBtn">Record</button>
+            </div>
+          </div>
+        </div>
+        <div class="shortcut-actions">
+          <button id="saveShortcutsBtn" class="apply-btn">Save Shortcuts</button>
+          <button id="resetShortcutsBtn" class="reset-btn">Reset to Default</button>
+        </div>
+      </section>
+
+      <!-- Default Key Bindings Reference Section -->
+      <section class="setting-section">
+        <div class="setting-header">
+          <h2>Default Key Bindings</h2>
+          <p class="setting-description">Quick reference for built-in keyboard shortcuts</p>
+        </div>
+        <div class="keybindings-grid">
+          <div class="keybinding-item">
+            <div class="key-display">S</div>
+            <div class="action-info">
+              <span class="action-name">Slower</span>
+              <span class="action-desc">-0.25x speed</span>
+            </div>
+          </div>
+          <div class="keybinding-item">
+            <div class="key-display">D</div>
+            <div class="action-info">
+              <span class="action-name">Faster</span>
+              <span class="action-desc">+0.25x speed</span>
+            </div>
+          </div>
+          <div class="keybinding-item">
+            <div class="key-display">Z</div>
+            <div class="action-info">
+              <span class="action-name">Rewind</span>
+              <span class="action-desc">-10 seconds</span>
+            </div>
+          </div>
+          <div class="keybinding-item">
+            <div class="key-display">X</div>
+            <div class="action-info">
+              <span class="action-name">Forward</span>
+              <span class="action-desc">+10 seconds</span>
+            </div>
+          </div>
+          <div class="keybinding-item">
+            <div class="key-display">G</div>
+            <div class="action-info">
+              <span class="action-name">Fast</span>
+              <span class="action-desc">Set to 5x</span>
+            </div>
+          </div>
+          <div class="keybinding-item">
+            <div class="key-display">R</div>
+            <div class="action-info">
+              <span class="action-name">Reset</span>
+              <span class="action-desc">Back to 1.0x</span>
+            </div>
+          </div>
+          <div class="keybinding-item">
+            <div class="key-display">V</div>
+            <div class="action-info">
+              <span class="action-name">Display</span>
+              <span class="action-desc">Toggle overlay</span>
+            </div>
+          </div>
+          <div class="keybinding-item">
+            <div class="key-display">M</div>
+            <div class="action-info">
+              <span class="action-name">Mute</span>
+              <span class="action-desc">Toggle audio</span>
+            </div>
+          </div>
+        </div>
+        <div class="keybindings-note">
+          <small>💡 These shortcuts work when a video is focused. Click on the video first if they don't
+            respond.</small>
+        </div>
+      </section>
+
+      <!-- Enhanced Features Section -->
+      <section class="setting-section">
+        <div class="setting-header">
+          <h2>Enhanced Features</h2>
+          <p class="setting-description">Advanced video control options</p>
+        </div>
+        <div class="enhanced-features">
+          <div class="feature-toggle">
+            <label class="toggle-switch">
+              <input type="checkbox" id="audioControlToggle">
+              <span class="toggle-slider"></span>
+            </label>
+            <span class="feature-label">Control Audio Elements</span>
+          </div>
+          <div class="feature-toggle">
+            <label class="toggle-switch">
+              <input type="checkbox" id="visualControllerToggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+            <span class="feature-label">Show Visual Controller</span>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Debug Section (Hidden by default) -->
+      <section class="setting-section debug-section" id="debugSection" style="display: none;">
+        <div class="setting-header">
+          <h2>Debug Tools</h2>
+          <p class="setting-description">Troubleshooting tools for video detection issues</p>
+        </div>
+        <div class="debug-actions">
+          <button id="debugVideoBtn" class="debug-btn">Debug Video Detection</button>
+          <button id="forceVideoScanBtn" class="debug-btn">Force Video Scan</button>
+          <button id="toggleDebugBtn" class="debug-btn">Show Debug Info</button>
+        </div>
+        <div class="debug-info" id="debugInfo" style="display: none;">
+          <div class="debug-item">
+            <span class="debug-label">Videos Found:</span>
+            <span class="debug-value" id="debugVideoCount">0</span>
+          </div>
+          <div class="debug-item">
+            <span class="debug-label">Platform Detected:</span>
+            <span class="debug-value" id="debugPlatform">None</span>
+          </div>
+          <div class="debug-item">
+            <span class="debug-label">Controllers Active:</span>
+            <span class="debug-value" id="debugControllers">0</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Educational Platform Section -->
+      <section class="setting-section" id="educationalSection" style="display: none;">
+        <div class="setting-header">
+          <h2 id="platformName">Educational Platform</h2>
+          <p class="setting-description">Optimized speeds and features for learning</p>
+        </div>
+        <div class="educational-presets" id="educationalPresets">
+          <!-- Educational speed presets will be populated here -->
+        </div>
+        <div class="educational-features">
+          <div class="feature-item">
+            <span class="feature-label">Auto-skip intro:</span>
+            <span class="feature-status" id="autoSkipStatus">Enabled</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-label">Lecture navigation:</span>
+            <span class="feature-status">Ctrl+← / Ctrl+→</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-label">Timestamped notes:</span>
+            <span class="feature-status">Ctrl+N</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Current Status Section -->
+      <section class="setting-section">
+        <div class="setting-header">
+          <h2>Current Status</h2>
+        </div>
+        <div class="status-info">
+          <div class="status-item">
+            <span class="status-label">Current Speed:</span>
+            <span class="status-value" id="currentSpeed">1.0x</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Domain:</span>
+            <span class="status-value" id="currentDomain">-</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Max Speed:</span>
+            <span class="status-value" id="maxSpeedDisplay">4.0x</span>
+          </div>
+          <div class="status-item" id="platformStatusItem" style="display: none;">
+            <span class="status-label">Platform:</span>
+            <span class="status-value" id="platformStatus">-</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Error/Success Messages -->
+    <div class="message-container" id="messageContainer" style="display: none;">
+      <div class="message" id="messageText"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="popup-footer">
+      <div class="shortcuts-info">
+        <div class="shortcuts-icon">📋</div>
+        <div class="shortcuts-text">
+          <small id="shortcutDisplay">Shortcuts: Shift+&gt; (faster) | Shift+&lt; (slower) | Shift+R (reset)</small>
+        </div>
+      </div>
+
+      <div class="footer-row">
+        <div class="contributor-info" data-url="https://www.sahdevraj.com.np/">
+          <span class="contributor-icon">🤝</span>
+          <small>Author: Devraj Sah</small>
+        </div>
+      </div>
+
+      <div class="footer-row">
+        <div class="author-info" data-url="https://www.bibekchandsah.com.np/">
+          <span class="author-icon">👨‍💻</span>
+          <small>Contributor: Bibek Chand Sah</small>
+        </div>
+      </div>
+
+      <div class="footer-row">
+        <div class="contribute-info" data-url="https://github.com/Devraj-sah22/video_speed_controller">
+          <span class="contribute-icon">🤝</span>
+          <small>Contribute on GitHub</small>
+        </div>
+      </div>
+
+      <div class="debug-toggle">
+        <small><a href="#" id="showDebugLink">Hide Debug Tools</a></small>
+      </div>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>
